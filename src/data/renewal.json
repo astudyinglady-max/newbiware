@@ -1,0 +1,297 @@
+{
+    "projectInfo": {
+        "projectName": "UBcare Renewal",
+        "coreConcept": "Data-connected AI Healthcare Platform No.1"
+    },
+    "themeConfiguration": {
+        "colorPalette": {
+            "primary": {
+                "name": "Trust Navy",
+                "main": "#0F172A",
+                "point": "#0EA5E9"
+            },
+            "secondary": {
+                "name": "Synergy Green",
+                "main": "#10B981"
+            },
+            "accent": {
+                "name": "Traffic Yellow",
+                "main": "#FACC15"
+            }
+        }
+    },
+    "layout": {
+        "header": {
+            "logo": {
+                "src": "/assets/logo_ubcare.svg",
+                "alt": "UBcare"
+            },
+            "navigation": [
+                {
+                    "label": "Company",
+                    "link": "/about",
+                    "subItems": [
+                        "기업개요",
+                        "CEO메시지",
+                        "투자정보",
+                        "내부정보관리규정",
+                        "회사현황",
+                        "전국대리점"
+                    ]
+                },
+                {
+                    "label": "Business",
+                    "link": "/solutions",
+                    "subItems": [
+                        "EMR (병/의원)",
+                        "EMR (약국)",
+                        "유통",
+                        "제약/데이터"
+                    ]
+                },
+                {
+                    "label": "UB Culture",
+                    "link": "/platform",
+                    "subItems": [
+                        "인재상",
+                        "UB Life",
+                        "UB Pride",
+                        "인재채용",
+                        "윤리경영"
+                    ]
+                }
+            ],
+            "actions": [
+                {
+                    "label": "KR",
+                    "type": "language"
+                },
+                {
+                    "label": "문의하기",
+                    "type": "cta",
+                    "style": "solid-blue"
+                }
+            ]
+        },
+        "floatingDock": {
+            "enabled": true,
+            "items": [
+                {
+                    "label": "홈",
+                    "icon": "home",
+                    "link": "/"
+                },
+                {
+                    "label": "솔루션",
+                    "icon": "briefcase",
+                    "link": "/solutions"
+                },
+                {
+                    "label": "플랫폼",
+                    "icon": "layers",
+                    "link": "/platform"
+                },
+                {
+                    "label": "문의",
+                    "icon": "chat",
+                    "link": "/contact"
+                }
+            ]
+        },
+        "footer": {
+            "brandTextBig": "UBcare",
+            "address": "서울시 성동구 왕십리로 241",
+            "copyright": "© UBcare. A Family of GC.",
+            "columns": [
+                {
+                    "title": "About",
+                    "links": [
+                        {
+                            "label": "회사소개",
+                            "link": "/about"
+                        },
+                        {
+                            "label": "CEO 인사말",
+                            "link": "/about/ceo"
+                        }
+                    ]
+                },
+                {
+                    "title": "Business",
+                    "links": [
+                        {
+                            "label": "EMR 솔루션",
+                            "link": "/business/emr"
+                        },
+                        {
+                            "label": "유통 솔루션",
+                            "link": "/business/dist"
+                        }
+                    ]
+                },
+                {
+                    "title": "IR",
+                    "links": [
+                        {
+                            "label": "재무정보",
+                            "link": "/ir/finance"
+                        },
+                        {
+                            "label": "주가정보",
+                            "link": "/ir/stock"
+                        }
+                    ]
+                }
+            ]
+        }
+    },
+    "pageContent": {
+        "home": {
+            "sections": [
+                {
+                    "id": "hero",
+                    "component": "Hero",
+                    "props": {
+                        "headline": "데이터로 연결되는<br/>AI 헬스케어의 미래",
+                        "subHeadline": "국내 시장 점유율 1위 EMR을 넘어,<br/>환자와 병원, 데이터를 잇는 No.1 디지털 헬스케어 플랫폼",
+                        "ctaPrimary": {
+                            "label": "도입 상담 신청",
+                            "link": "/contact"
+                        },
+                        "ctaSecondary": {
+                            "label": "솔루션 전체보기",
+                            "link": "/solutions"
+                        }
+                    }
+                },
+                {
+                    "id": "metrics",
+                    "component": "StatsBar",
+                    "props": {
+                        "items": [
+                            {
+                                "value": "44%",
+                                "label": "병·의원 EMR M/S 1위"
+                            },
+                            {
+                                "value": "24,000+",
+                                "label": "의료 네트워크 파트너"
+                            },
+                            {
+                                "value": "1,200만",
+                                "label": "환자 플랫폼 가입자"
+                            },
+                            {
+                                "value": "Since 1993",
+                                "label": "헬스케어 혁신의 역사"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "business_solutions",
+                    "component": "TabbedCards",
+                    "props": {
+                        "headline": "Total Healthcare Solutions",
+                        "description": "진료부터 경영, 데이터 분석까지 병의원과 기업에 필요한 모든 솔루션을 제공합니다.",
+                        "tabs": [
+                            "For Hospital",
+                            "For Pharmacy",
+                            "For Pharma"
+                        ],
+                        "items": [
+                            {
+                                "category": "For Hospital",
+                                "title": "의사랑 (Medical EMR)",
+                                "desc": "개원가의 압도적 표준, 진료 효율 극대화",
+                                "icon": "icon-medical.svg",
+                                "link": "/solutions/medical"
+                            },
+                            {
+                                "category": "For Pharmacy",
+                                "title": "유팜 (Pharmacy EMR)",
+                                "desc": "약국 경영의 파트너, 조제부터 청구까지",
+                                "icon": "icon-pill.svg",
+                                "link": "/solutions/pharmacy"
+                            },
+                            {
+                                "category": "For Pharma",
+                                "title": "UBIST (Data Analytics)",
+                                "desc": "원외처방 데이터 분석 점유율 1위",
+                                "icon": "icon-chart.svg",
+                                "link": "/solutions/data"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "synergy",
+                    "component": "SynergySection",
+                    "props": {
+                        "headline": "The Complete Care Cycle",
+                        "center": "EMR HUB",
+                        "left": {
+                            "label": "똑닥 (Ddocdoc)",
+                            "desc": "진료 예약·접수 자동화 (MAU 100만)",
+                            "color": "yellow"
+                        },
+                        "right": {
+                            "label": "닥터바이스 (Dr.Vice)",
+                            "desc": "만성질환 환자 관리 & 수가 청구",
+                            "color": "green"
+                        }
+                    }
+                },
+                {
+                    "id": "why_ubcare",
+                    "component": "Why UBcare?",
+                    "props": {
+                        "headline": "Why UBcare?",
+                        "subHeadline": "환자, 병원, 데이터, 그리고 제약사를 연결하는 유일한 플랫폼",
+                        "features": [
+                            {
+                                "title": "전국 최대 A/S 네트워크",
+                                "desc": "전국 37개 대리점의 신속하고 전문적인 기술지원"
+                            },
+                            {
+                                "title": "압도적 재무 안정성",
+                                "desc": "GC녹십자 그룹의 든든한 자본력과 지속적인 성장"
+                            },
+                            {
+                                "title": "독보적 데이터 경쟁력",
+                                "desc": "국내 최대 규모의 의료 빅데이터 보유 및 분석 역량"
+                            },
+                            {
+                                "title": "디지털 헬스케어 리더",
+                                "desc": "끊임없는 기술 혁신으로 시장을 선도"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "id": "ir_news",
+                    "component": "IRNews",
+                    "props": {
+                        "headline": "IR & News",
+                        "stockPrice": "4,750 KRW",
+                        "stockChange": "+120 (2.5%)",
+                        "news": [
+                            "유비케어, 3분기 역대 최대 매출 달성",
+                            "똑닥, 월간 활성 사용자(MAU) 100만 돌파",
+                            "차세대 클라우드 EMR 플랫폼 출시 예정"
+                        ]
+                    }
+                },
+                {
+                    "id": "contact",
+                    "component": "ContactCTA",
+                    "props": {
+                        "headline": "병·의원 경영의 혁신, 지금 시작하세요.",
+                        "primaryBtn": "가입 상담 신청",
+                        "secondaryBtn": "대리점 찾기"
+                    }
+                }
+            ]
+        }
+    }
+}

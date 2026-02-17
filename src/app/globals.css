@@ -1,0 +1,59 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0F172A;
+  --color-primary-50: #F0F5FF;
+  --color-primary-100: #E0EBFF;
+  --color-primary-500: #3B82F6;
+  --color-primary-900: #001A3D;
+  --color-primary-950: #0F172A;
+
+  --color-secondary: #10B981;
+  --color-accent: #FACC15;
+
+  --color-glass-border: rgba(255, 255, 255, 0.1);
+  --color-glass-bg: rgba(255, 255, 255, 0.05);
+
+  --font-sans: "Pretendard", var(--font-geist-sans), "Noto Sans KR", sans-serif;
+  --font-mono: var(--font-geist-mono);
+
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
+
+/* Custom Utilities for Glassmorphism */
+@utility glass {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+@utility text-balance {
+  text-wrap: balance;
+}
+
+html,
+body {
+  font-family: "Pretendard", sans-serif;
+}
+
+body {
+  background: #0F172A;
+  /* Trust Navy Dark Main */
+  color: #F8FAFC;
+  font-family: "Pretendard", sans-serif;
+  overflow-x: hidden;
+}
