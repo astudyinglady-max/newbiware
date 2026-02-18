@@ -14,9 +14,7 @@ export default function HistoryPage() {
       subLabel="Company History"
       headline={
         <>
-          디지털 헬스케어의 역사를 시작하고,
-          <br />
-          그 끊임없는 도전의 역사를 만듭니다.
+          도전으로 써온<br />디지털 헬스케어의 역사
         </>
       }
     >

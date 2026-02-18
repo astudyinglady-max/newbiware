@@ -27,19 +27,19 @@ export const HistoryTimeline: React.FC<HistoryTimelineProps> = ({
   baseDetailPath = "/about/history",
 }) => {
   return (
-    <section className="bg-white text-slate-900  py-16 sm:py-12">
-      <div className="container px-6 min-w-[1600px] mx-auto">
+    <section className="bg-white text-slate-900  py-20 sm:py-20">
+      <div className="container min-w-[1600px] mx-auto">
         {periods.map((period) => (
-          <div key={period.id} className="mb-16 last:mb-0 ">
-            <div className="mb-8">
+          <div key={period.id} className="mb-20 last:mb-0 flex items-start justify-start gap-30">
+            <div className="mb-8 sticky top-[320px] bg-white z-50 w-[340px]">
               <h2 className="text-2xl sm:text-2xl font-bold text-slate-700">
                 {period.title ?? period.range}
               </h2>
               {period.title && (
-                <p className="text-4xl sm:text-4xl font-light text-emerald-400 mt-8">{period.range}</p>
+                <p className="text-5xl sm:text-6xl font-extralight text-emerald-400 mt-8">{period.range}</p>
               )}
             </div>
-            <ul className="divide-y divide-slate-200">
+            <ul className="divide-y divide-slate-200 -mt-8">
               {period.milestones.map((m) => (
                 <li key={m.id} className="group">
                   <Link

@@ -13,9 +13,8 @@ export default function OverviewPage() {
       subLabel="Company Overview"
       headline={
         <>
-          건강한 삶을 위한 가치 창조,
-          <br />
-          유비케어가 함께하겠습니다.
+         건강한 삶의 가치,<br />
+         유비케어가 함께 만들어갑니다.
         </>
       }
     >

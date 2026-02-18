@@ -3,22 +3,15 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 
+// 헬스케어, 회사, 건강, AI, 병원 관련 이미지
 const GRID_IMAGES = [
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=400&q=80",
-  "https://images.unsplash.com/photo-1497366216548-37526070297c?w=400&q=80",
-  "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=400&q=80",
-  "https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=400&q=80",
-  "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=400&q=80",
-  "https://images.unsplash.com/photo-1497215842964-222b430dc094?w=400&q=80",
-  "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=400&q=80",
-  "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&q=80",
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80",
-  "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80",
-  "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80",
-  "https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=400&q=80",
-  "https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=400&q=80",
-  "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=400&q=80",
-  "https://images.unsplash.com/photo-1600607687644-c7171b42498f?w=400&q=80",
+  "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80", // 의료/청진기
+  "https://images.unsplash.com/photo-1551076805-e1869033e561?w=400&q=80", // 병원/의료진
+  "https://images.unsplash.com/photo-1551601651-2a8555f1a136?w=400&q=80", // AI/기술
+  "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80", // AI/디지털
+  "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=400&q=80", // 회사/협업
+  "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400&q=80", // 건강/웰니스
+  "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&q=80", // 건강식/라이프스타일
 ];
 
 const containerVariants = {
@@ -56,9 +49,9 @@ export function OverviewGridSection() {
 
   return (
     <section ref={ref} className="py-16 sm:py-24 overflow-hidden">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto max-w-[1600px]">
         <motion.div
-          className="grid grid-cols-3 sm:grid-cols-5 gap-3 sm:gap-4 max-w-6xl mx-auto"
+          className="grid grid-cols-3 sm:grid-cols-4 gap-3 sm:gap-4 mx-auto"
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
