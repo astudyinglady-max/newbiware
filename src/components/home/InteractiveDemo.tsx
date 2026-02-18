@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+
 const steps = [
   {
     id: '01',
@@ -75,9 +76,9 @@ const InteractiveDemo: React.FC = () => {
   }, [activeStep]);
 
   return (
-    <section className="py-24 bg-white overflow-hidden">
+    <section className="py-24 bg-white overflow-hidden touch-pan-y">
       <div className="max-w-[1600px] mx-auto px-6">
-        
+
         {/* Header */}
 
 
@@ -86,11 +87,11 @@ const InteractiveDemo: React.FC = () => {
             <span className="text-sm font-bold tracking-[0.2em] text-[#0055FF] uppercase">PRODUCT WORKFLOW</span>
             <h2 className="text-4xl md:text-5xl font-bold text-[#0A0A0F]">EMR 하나로 연결되는 의료 경험</h2>
           </div>
-          
+
         </div>
 
-        {/* Carousel Content */}
-        <div className="relative bg-[#F8FAFF] rounded-[32px] overflow-hidden min-h-[500px] border border-black/5">
+        {/* Carousel Content — touch-action: pan-y so vertical scroll is not captured by horizontal drag */}
+        <div className="relative bg-[#F8FAFF] rounded-[16px] overflow-hidden min-h-[500px] border border-black/5 touch-pan-y">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={activeStep}
@@ -103,10 +104,12 @@ const InteractiveDemo: React.FC = () => {
                 x: { type: "spring", stiffness: 300, damping: 30 },
                 opacity: { duration: 0.2 }
               }}
-              className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 h-full"
+              className="absolute inset-0 grid grid-cols-1 lg:grid-cols-2 h-full touch-pan-y"
+              style={{ touchAction: 'pan-y' }}
               drag="x"
               dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={1}
+              dragElastic={0.3}
+              dragDirectionLock
               onDragEnd={(e, { offset, velocity }) => {
                 const swipe = swipePower(offset.x, velocity.x);
                 if (swipe < -swipeConfidenceThreshold) {
@@ -118,7 +121,7 @@ const InteractiveDemo: React.FC = () => {
             >
               {/* Left Content */}
               <div className="p-8 md:p-16 flex flex-col justify-center h-full relative z-10 bg-[#F8FAFF]">
-                
+
                  <h3 className="text-3xl font-bold text-[#0A0A0F] leading-tight mb-8">
                     {steps[activeStep].title}
                  </h3>
@@ -139,7 +142,7 @@ const InteractiveDemo: React.FC = () => {
                     alt={steps[activeStep].title} 
                     className="absolute inset-0 w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/10 lg:hidden"></div>
+                <div className="absolute inset-0 bg-linear-to-l from-transparent to-black/10 lg:hidden"></div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -149,7 +152,7 @@ const InteractiveDemo: React.FC = () => {
         <div className="mt-8 flex items-center gap-8">
             {/* Progress Bar */}
             <div className="flex-1 h-[2px] bg-black/10 rounded-full overflow-hidden relative">
-                <motion.div 
+                <motion.div
                     className="absolute top-0 left-0 h-full bg-[#0055FF]"
                     initial={{ width: '0%' }}
                     animate={{ width: `${((activeStep + 1) / steps.length) * 100}%` }}
@@ -159,17 +162,21 @@ const InteractiveDemo: React.FC = () => {
 
             {/* Navigation Buttons */}
             <div className="flex items-center gap-3">
-                <button 
+                <button
+                    type="button"
                     onClick={() => paginate(-1)}
                     className="w-10 h-10 rounded-full bg-[#F0F4FF] text-[#0055FF] flex items-center justify-center hover:bg-[#0055FF] hover:text-white transition-all disabled:opacity-50"
+                    aria-label="이전 단계"
                 >
-                    <ChevronLeft className="w-5 h-5" />
+                    <ChevronLeft className="w-5 h-5" aria-hidden />
                 </button>
-                <button 
+                <button
+                    type="button"
                     onClick={() => paginate(1)}
                     className="w-10 h-10 rounded-full bg-[#F0F4FF] text-[#0055FF] flex items-center justify-center hover:bg-[#0055FF] hover:text-white transition-all"
+                    aria-label="다음 단계"
                 >
-                    <ChevronRight className="w-5 h-5" />
+                    <ChevronRight className="w-5 h-5" aria-hidden />
                 </button>
             </div>
         </div>

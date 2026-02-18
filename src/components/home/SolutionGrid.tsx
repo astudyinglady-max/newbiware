@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { Activity, Pill, ShoppingCart, BarChart3, ChevronRight } from 'lucide-react';
 
 const solutions = [
@@ -31,7 +32,7 @@ const solutions = [
 
 const SolutionsGrid: React.FC = () => {
   return (
-    <div className="py-32 bg-white relative">
+    <div className="py-32 bg-white relative touch-pan-y overflow-visible">
       <div className="max-w-[1600px] mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
           <div className="space-y-4">
@@ -43,9 +44,13 @@ const SolutionsGrid: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-6">
           {solutions.map((item, idx) => (
-            <div 
+            <motion.div
               key={idx}
-              className="group relative bg-[#F8FAFF] border border-black/5 p-10 rounded-3xl transition-all duration-500 hover:-translate-y-2 hover:border-[#0055FF]/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] cursor-pointer"
+              className="group relative bg-[#F8FAFF] border border-black/5 p-10 rounded-2xl transition-all duration-500 hover:border-[#0055FF]/20 hover:shadow-[0_20px_40px_rgba(0,0,0,0.05)] cursor-pointer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: idx * 0.08, ease: 'easeOut' }}
             >
               <div className="relative z-10 space-y-6">
                 <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center text-[#9CAFB7] group-hover:bg-[#0055FF] group-hover:text-white transition-all shadow-sm">
@@ -56,13 +61,13 @@ const SolutionsGrid: React.FC = () => {
                   <p className="text-black/50 text-md leading-relaxed">{item.description}</p>
                 </div>
                 <div className="pt-4 flex items-center justify-between border-t border-black/5">
-                  <span className="text-md font-bold text-black/40 tracking-widest uppercase">{item.stats}</span>
+                  <span className="text-md font-bold text-[#0055FF] tracking-widest uppercase">{item.stats}</span>
                   <div className="w-8 h-8 rounded-full border border-black/10 flex items-center justify-center group-hover:border-[#0055FF] transition-colors">
                      <ChevronRight className="w-5 h-5" />
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

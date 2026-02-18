@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'framer-motion';
 import { ShieldCheck, Award, Link2, MapPin, CheckCircle2 } from 'lucide-react';
 
 const TrustBadges: React.FC = () => {
@@ -16,9 +17,13 @@ const TrustBadges: React.FC = () => {
       <div className="max-w-[1600px] mx-auto px-6">
         <div className="flex flex-wrap items-center justify-center lg:justify-between gap-y-12 gap-x-16">
           {badges.map((badge, idx) => (
-            <div 
-              key={idx} 
+            <motion.div
+              key={idx}
               className="flex items-center gap-4 opacity-50 hover:opacity-100 transition-all duration-500 cursor-default group"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.45, delay: idx * 0.07, ease: 'easeOut' }}
             >
               <div className="w-12 h-12 rounded-xl bg-white flex items-center justify-center text-[#0055FF] group-hover:shadow-md transition-all border border-black/5">
                 {badge.icon}
@@ -31,7 +36,7 @@ const TrustBadges: React.FC = () => {
                   {badge.sub}
                 </span>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

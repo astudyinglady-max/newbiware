@@ -32,6 +32,7 @@
                     "link": "/about",
                     "subItems": [
                         "기업개요",
+                        "연혁",
                         "CEO메시지",
                         "투자정보",
                         "내부정보관리규정",
@@ -86,15 +87,11 @@
                     "icon": "briefcase",
                     "link": "/solutions"
                 },
+              
                 {
-                    "label": "플랫폼",
-                    "icon": "layers",
-                    "link": "/platform"
-                },
-                {
-                    "label": "문의",
+                    "label": "챗봇",
                     "icon": "chat",
-                    "link": "/contact"
+                    "link": "#chat"
                 }
             ]
         },

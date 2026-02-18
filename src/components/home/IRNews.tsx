@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import { motion } from "framer-motion";
 import { ArrowUpRight, TrendingUp } from "lucide-react";
 
 interface IRNewsProps {
@@ -45,7 +46,7 @@ export const IRNews: React.FC<IRNewsProps> = ({ headline, stockPrice, stockChang
 
     return (
         <section className="py-24 bg-white">
-            <div className="container mx-auto px-6">
+            <div className="container max-w-[1600px] mx-auto px-6">
                 
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
                     <div className="space-y-4">
@@ -54,7 +55,10 @@ export const IRNews: React.FC<IRNewsProps> = ({ headline, stockPrice, stockChang
                     </div>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div
+                    className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-6"
+                    style={{ overflow: "hidden" }}
+                >
 
                  
                     <div className="p-8 rounded-2xl bg-blue-600 text-white shadow-xl shadow-blue-500/20 flex flex-col justify-between h-full relative overflow-hidden group">
@@ -76,10 +80,14 @@ export const IRNews: React.FC<IRNewsProps> = ({ headline, stockPrice, stockChang
                     {/* News List */}
                     <div className="lg:col-span-2 space-y-4">
                         {news.map((item, idx) => (
-                            <a
+                            <motion.a
                                 key={idx}
                                 href="#"
-                                className="block p-6 rounded-xl bg-slate-50 hover:bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5 transition-all group"
+                                className="block p-6 rounded-[16px] bg-slate-50 hover:bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5 transition-all group"
+                                initial={{ opacity: 0, y: 16 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.2 }}
+                                transition={{ duration: 0.5, delay: idx * 0.06, ease: "easeOut" }}
                             >
                                 <div className="flex items-center justify-between">
                                     <span className="text-slate-700 font-medium group-hover:text-blue-600 transition-colors truncate pr-8">
@@ -87,8 +95,8 @@ export const IRNews: React.FC<IRNewsProps> = ({ headline, stockPrice, stockChang
                                     </span>
                                     <ArrowUpRight size={16} className="text-slate-400 group-hover:text-blue-500 transition-colors shrink-0" />
                                 </div>
-                                <span className="text-slate-400 text-sm mt-2 block">2024.10.{24 - idx}</span>
-                            </a>
+                                    <span className="text-slate-400 text-sm mt-2 block">2024.10.{24 - idx}</span>
+                                </motion.a>
                         ))}
                     </div>
 

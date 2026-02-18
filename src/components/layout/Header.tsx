@@ -11,36 +11,71 @@ interface HeaderProps {
     actions: Array<{ label: string; type: string; style?: string }>;
 }
 
+const SCROLL_THRESHOLD = 20;
+
+const SUB_LINK_MAP: Record<string, Record<string, string>> = {
+  Company: {
+    "기업개요": "/about/overview",
+    "연혁": "/about/history",
+    "CEO메시지": "/about/ceo",
+    "투자정보": "/about/ir",
+    "내부정보관리규정": "/about/policy",
+    "회사현황": "/about/company-status",
+    "전국대리점": "/about/branches",
+  },
+  Business: {
+    "EMR (병/의원)": "/solutions/medical",
+    "EMR (약국)": "/solutions/pharmacy",
+    "유통": "/solutions/distribution",
+    "제약/데이터": "/solutions/pharma",
+  },
+  "UB Culture": {
+    "인재상": "/platform/talent",
+    "UB Life": "/platform/ub-life",
+    "UB Pride": "/platform/ub-pride",
+    "인재채용": "/platform/recruit",
+    "윤리경영": "/platform/ethics",
+  },
+};
+
+function getSubLink(parentLabel: string, subLabel: string): string {
+  return SUB_LINK_MAP[parentLabel]?.[subLabel] ?? "#";
+}
+
 export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => {
     const [scrolled, setScrolled] = useState(false);
+    const rafId = React.useRef<number | null>(null);
 
     useEffect(() => {
-        const handleScroll = () => {
-            setScrolled(window.scrollY > 20);
+        const updateScrolled = () => {
+            setScrolled(window.scrollY > SCROLL_THRESHOLD);
+            rafId.current = null;
         };
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        const handleScroll = () => {
+            if (rafId.current !== null) return;
+            rafId.current = requestAnimationFrame(updateScrolled);
+        };
+        setScrolled(window.scrollY > SCROLL_THRESHOLD);
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            if (rafId.current !== null) cancelAnimationFrame(rafId.current);
+        };
     }, []);
 
     return (
         <header
             className={cn(
                 "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                scrolled ? "py-4 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm" : "py-6 bg-transparent"
+                scrolled ? "py-4 bg-white/90 backdrop-blur-md shadow-sm" : "py-6 bg-transparent"
             )}
         >
-            <div className="container mx-auto px-6 flex items-center justify-between">
+            <div className="container mx-auto flex items-center justify-between">
                 {/* Left: Logo & Badge */}
-                <Link href="/" className="flex items-center gap-3 group">
-                    {/* Logo Placeholder */}
-                    <div className={cn("text-2xl font-black tracking-tighter transition-colors", scrolled ? "text-slate-900" : "text-white")}>
+                <Link href="/" className="flex items-center gap-3 group" aria-label="UBcare 홈">
+                    <span className={cn("text-2xl font-black tracking-tighter transition-colors text-[#0055FF]", scrolled ? "text-slate-900" : "text-white")}>
                         UBcare
-                    </div>
-                    {/* User removed badge, keeping it removed or optional if they add it back later, but strictly following current file state I should probably leave it out or check if they want it back. The blueprint had it, but user removed it. I will leave it out to respect user edit, or add it back if I'm "resetting" to blueprint. User said "modify structure... based on blueprint" initially, but then manually removed it. I'll respect the blueprint generally but might have to accept the user's manual change. 
-                Actually, the user request says "overall primary bg... white bg...". 
-                I will re-add the badge code but maybe commented out or just clean up the file to support the light theme properly. 
-                I'll stick to the "Light Theme Refactor" goal: visible text on white.
-            */}
+                    </span>
                 </Link>
                 {/* Center: GNB */}
                 <nav className="hidden lg:flex items-center gap-8">
@@ -72,7 +107,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
                                         {item.subItems.map((sub, subIdx) => (
                                             <Link
                                                 key={subIdx}
-                                                href="#"
+                                                href={getSubLink(item.label, sub)}
                                                 className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
                                             >
                                                 {sub}

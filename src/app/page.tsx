@@ -8,7 +8,6 @@ import {
   RenewalData,
   HeroProps,
   StatsBarProps,
-  TabbedCardsProps,
   SynergySectionProps,
   WhyUBcareProps,
   IRNewsProps,
@@ -18,14 +17,11 @@ import {
 // Components
 import ShaderShowcase from "@/components/ui/hero";
 import { StatsBar } from "@/components/home/StatsBar";
-import { TabbedCards } from "@/components/home/TabbedCards";
 import { SynergySection } from "@/components/home/SynergySection";
 import { WhyUBcare } from "@/components/home/WhyUBcare";
 import { IRNews } from "@/components/home/IRNews";
+import { CompanyPolicy } from "@/components/home/CompanyPolicy";
 import { ContactCTA } from "@/components/home/ContactCTA";
-import { Hero3D } from "@/components/home/Hero3D";
-import { BentoGrid, BentoCard } from "@/components/ui/bento-grid";
-import { Activity, Pill, LineChart } from "lucide-react";
 import SolutionsGrid from "@/components/home/SolutionGrid";
 import TrustBadges from "@/components/home/TrustBadges";
 import InteractiveDemo from "@/components/home/InteractiveDemo";
@@ -39,18 +35,7 @@ export default function Home() {
   const getProps = <T,>(id: string) => sections.find(s => s.id === id)?.props as T | undefined;
 
   const heroProps = getProps<HeroProps>("hero");
-  const hero3DProps = heroProps ? {
-    headline: heroProps.headline,
-    subHeadline: heroProps.subHeadline,
-    badge: { label: "2024 Renewal", color: "blue" },
-    cta: {
-      primary: heroProps.ctaPrimary,
-      secondary: heroProps.ctaSecondary
-    }
-  } : null;
-
   const metricsProps = getProps<StatsBarProps>("metrics");
-  const businessProps = getProps<TabbedCardsProps>("business_solutions");
   const synergyProps = getProps<SynergySectionProps>("synergy");
   const whyProps = getProps<WhyUBcareProps>("why_ubcare");
   const irProps = getProps<IRNewsProps>("ir_news");
@@ -69,10 +54,7 @@ export default function Home() {
 
       
       {/* 3. Business Solutions */}
-      {businessProps && (
-        <SolutionsGrid />
-
-      )}
+      <SolutionsGrid />
 
       <InteractiveDemo />
 
@@ -95,9 +77,6 @@ export default function Home() {
         />
       )}
 
-     
-    
-
       {/* 6. IR & News */}
       {irProps && (
         <IRNews
@@ -108,7 +87,10 @@ export default function Home() {
         />
       )}
 
-       <TrustBadges />
+      {/* 6-1. Company Policy (UB Life, Business, Recruit) */}
+      <CompanyPolicy />
+
+      
 
       {/* 7. Contact CTA */}
       {contactProps && (
@@ -119,9 +101,7 @@ export default function Home() {
         />
       )}
 
-
-      
-
+      <TrustBadges />
     </div>
   );
 }

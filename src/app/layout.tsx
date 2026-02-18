@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google"; // Keep these or remove if
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
-import { FloatingDock } from "@/components/layout/FloatingDock";
+import { DockAndChat } from "@/components/layout/DockAndChat";
 import renewalData from "@/data/renewal.json";
 
 const geistSans = Geist({
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ko">
       <head>
         <link rel="stylesheet" as="style" crossOrigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
       </head>
@@ -45,7 +45,7 @@ export default function RootLayout({
         </main>
 
         {renewalData.layout.floatingDock.enabled && (
-          <FloatingDock items={renewalData.layout.floatingDock.items} />
+          <DockAndChat items={renewalData.layout.floatingDock.items} />
         )}
 
         <Footer

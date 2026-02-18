@@ -1,4 +1,3 @@
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
 @import "tailwindcss";
 
 @theme {
@@ -19,6 +18,17 @@
   --font-mono: var(--font-geist-mono);
 
   --animate-float: float 6s ease-in-out infinite;
+  --animate-aurora: aurora 60s linear infinite;
+
+  /* Aurora background (for aurora-background component) */
+  --white: #fff;
+  --black: #000;
+  --transparent: transparent;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --indigo-300: #a5b4fc;
+  --violet-200: #c4b5fd;
 
   @keyframes float {
 
@@ -29,6 +39,15 @@
 
     50% {
       transform: translateY(-20px);
+    }
+  }
+
+  @keyframes aurora {
+    from {
+      background-position: 50% 50%, 50% 50%;
+    }
+    to {
+      background-position: 350% 50%, 350% 50%;
     }
   }
 }
@@ -51,9 +70,18 @@ body {
 }
 
 body {
-  background: #0F172A;
+  background: #ffffff;
   /* Trust Navy Dark Main */
   color: #F8FAFC;
   font-family: "Pretendard", sans-serif;
-  overflow-x: hidden;
+  /* clip avoids creating a scroll container; reduces risk of vertical scroll trapping */
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Promote heavy sections to own compositor layer for smoother scroll */
+section,
+[data-section] {
+  contain: layout style paint;
 }
