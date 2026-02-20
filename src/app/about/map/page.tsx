@@ -1,6 +1,5 @@
 import { AboutSubPageLayout } from "@/components/about/AboutSubPageLayout";
-import NetworkHome from "@/components/about/NetworkHome";
-import { OverviewGridSection } from "@/components/about/OverviewGridSection";
+import NetworkHomeDynamic from "@/components/about/NetworkHomeDynamic";
 
 export const metadata = {
   title: "전국대리점",
@@ -14,13 +13,13 @@ export default function MapPage() {
       subLabel="Company Overview"
       headline={
         <>
-         건강한 삶의 가치,<br />
-         유비케어가 함께 만들어갑니다.
+          건강한 삶의 가치,<br />
+          유비케어가 함께 만들어갑니다.
         </>
       }
     >
       <div>
-       <NetworkHome />
+        <NetworkHomeDynamic />
       </div>
     </AboutSubPageLayout>
   );
