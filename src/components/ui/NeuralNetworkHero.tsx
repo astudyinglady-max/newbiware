@@ -67,52 +67,30 @@ export default function NeuralNetworkHero({
   );
 
   return (
-    <section ref={sectionRef} className="relative h-[70vh] w-full flex flex-col justify-center touch-pan-y">
+    <section ref={sectionRef} className="relative min-h-[60vh] h-[70vh] sm:min-h-[65vh] w-full flex flex-col justify-center touch-pan-y">
     
-      <div className="relative mx-auto flex max-w-[1600px] w-full flex-col items-start gap-8 pb-24 pt-20">
+      <div className="relative mx-auto flex max-w-[1600px] w-full flex-col items-start gap-5 sm:gap-6 md:gap-8 pb-16 sm:pb-20 md:pb-24 pt-12 sm:pt-16 md:pt-20 px-4 sm:px-6">
         <div ref={badgeRef} className="inline-flex items-center gap-3 rounded-full border border-black/5 bg-white/80 px-4 py-2 ">
           <span className="text-[14px] font-bold uppercase tracking-[0.2em] text-[#0055FF]">{badgeLabel}</span>
           <div className="w-1 h-1 rounded-full bg-black/20" />
           <span className="text-[14px]  font-medium tracking-tight text-black/70">{badgeText}</span>
         </div>
 
-        {/* <h1 
-          ref={headerRef} 
-          className="max-w-6xl text-left font-bold leading-[1.1] tracking-tight text-[#ffffff] font-syne lg:text-7xl  sm:text-5xl md:text-6xl "
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-
-        <p ref={paraRef} className="max-w-4xl text-left font-light leading-relaxed tracking-tight text-white text-2xl"
-            dangerouslySetInnerHTML={{ __html: description }}
-        /> */}
+        
     
-        <h1 className="text-5xl md:text-7xl font-extrabold text-white leading-[1.1] mb-6 tracking-tight">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold text-white leading-[1.1] mb-4 sm:mb-6 tracking-tight">
           데이터로 연결되는 <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-emerald-400">AI 헬스케어의 미래</span>
         </h1>
-        <p className="text-xl md:text-2xl text-slate-300 font-light mb-10 leading-relaxed max-w-2xl">
+        <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-300 font-light mb-6 sm:mb-8 md:mb-10 leading-relaxed max-w-2xl">
           국내 시장 점유율 1위 EMR을 넘어, <br className="hidden md:block"/> 
           환자와 병원, 데이터를 잇는 No.1 디지털 헬스케어 플랫폼
         </p>
 
 
-        {/* <div ref={ctaRef} className="flex flex-wrap items-center gap-4 pt-4">
-          {ctaButtons?.map((button, index) => (
-            <a
-              key={index}
-              href={button.href}
-              className={`rounded-full px-10 py-5 text-base font-bold tracking-tight transition-all duration-300 transform active:scale-95 ${
-                button.primary
-                  ? "bg-[#0055FF] text-white hover:bg-[#0044EE] hover:shadow-[0_10px_30px_rgba(0,85,255,0.3)]"
-                  : "bg-black/5 text-white border border-black/5 hover:bg-black/10"
-              }`}
-            >
-              {button.text}
-            </a>
-          ))}
-        </div> */}
+       
 
-        <ul className="mt-12 flex flex-wrap gap-10 text-sm font-bold tracking-[0.1em] text-white uppercase p-1">
+        <ul className="mt-8 sm:mt-10 md:mt-12 flex flex-wrap gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-bold tracking-[0.1em] text-white uppercase p-1">
           {microDetails?.map((detail, index) => (
             <li 
               key={index} 

@@ -33,7 +33,7 @@ const solutions = [
 
 const SolutionsGrid: React.FC = () => {
   return (
-    <section className="relative min-h-[720px] py-24 md:py-32 overflow-hidden touch-pan-y">
+    <section className="relative min-h-0 sm:min-h-[480px] lg:min-h-[720px] py-16 sm:py-20 md:py-24 lg:py-32 overflow-hidden touch-pan-y">
       {/* 풀 배경: 다크 블루 + 추상 도형 */}
       <div className="absolute inset-0 bg-[#0F172A]" />
       <div
@@ -50,19 +50,19 @@ const SolutionsGrid: React.FC = () => {
       <div className="absolute top-0 right-0 w-[min(80vw,500px)] h-[min(60vw,400px)] bg-blue-500/20 rounded-bl-[50%] rounded-br-none translate-x-[20%] -translate-y-[10%]" />
       <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#1e3a5f]/40 rounded-full blur-3xl" />
 
-      <div className="relative z-10 max-w-[1600px] mx-auto px-6">
+      <div className="relative z-10 max-w-[1600px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* 왼쪽: 타이틀 영역 */}
-          <div className="lg:col-span-4 pt-8 lg:pt-16">
-            <span className="text-sm font-bold tracking-[0.2em] text-blue-400 uppercase">
+          <div className="lg:col-span-4 pt-6 sm:pt-8 lg:pt-16">
+            <span className="text-xs sm:text-sm font-bold tracking-[0.2em] text-blue-400 uppercase">
               Core Solutions
             </span>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-4 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mt-3 sm:mt-4 leading-tight">
               유비케어의 4대
               <br />
               핵심 솔루션
             </h2>
-            <p className="text-slate-400 mt-6 text-lg">
+            <p className="text-slate-400 mt-4 sm:mt-6 text-sm sm:text-base md:text-lg">
               의료와 ICT의 융합으로
               <br className="hidden sm:block" />
               새로운 헬스케어를 만듭니다.
@@ -71,7 +71,7 @@ const SolutionsGrid: React.FC = () => {
 
           {/* 오른쪽: 엇갈린 카드 그리드 (2열, 짝수 항목 위로 올림) */}
           <div className="lg:col-span-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
               {solutions.map((item, idx) => {
                 const Icon = item.icon;
                 const isEven = idx % 2 === 1;
@@ -79,20 +79,20 @@ const SolutionsGrid: React.FC = () => {
                   <motion.a
                     key={idx}
                     href="#"
-                    className={`group relative block rounded-2xl p-8 bg-slate-800/60 backdrop-blur-sm border border-white/10 hover:border-blue-400/30 hover:bg-slate-800/80 transition-all duration-300 ${isEven ? "sm:-mt-8" : ""}`}
+                    className={`group relative block rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 bg-slate-800/60 backdrop-blur-sm border border-white/10 hover:border-blue-400/30 hover:bg-slate-800/80 transition-all duration-300 ${isEven ? "sm:relative sm:-mt-12" : ""}`}
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.5, delay: idx * 0.08, ease: "easeOut" }}
                   >
-                    <div className="flex flex-col h-full min-h-[220px]">
-                      <div className="w-14 h-14 rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-300 mb-6 group-hover:bg-blue-500/30 transition-colors">
-                        <Icon className="w-7 h-7" />
+                    <div className="flex flex-col h-full min-h-[140px] sm:min-h-[160px]">
+                      <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-lg sm:rounded-xl bg-blue-500/20 flex items-center justify-center text-blue-300 mb-4 sm:mb-6 group-hover:bg-blue-500/30 transition-colors">
+                        <Icon className="w-6 h-6 sm:w-7 sm:h-7" />
                       </div>
-                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-200 transition-colors">
+                      <h3 className="text-lg sm:text-xl font-bold text-white mb-1 sm:mb-2 group-hover:text-blue-200 transition-colors">
                         {item.title}
                       </h3>
-                      <p className="text-slate-400 text-sm leading-relaxed flex-1">
+                      <p className="text-slate-400 text-xs sm:text-sm leading-relaxed flex-1">
                         {item.description}
                       </p>
                       <div className="mt-6 flex items-center justify-between">

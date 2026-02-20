@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, Globe, ChevronDown } from "lucide-react";
+import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface HeaderProps {
@@ -44,7 +44,10 @@ function getSubLink(parentLabel: string, subLabel: string): string {
 
 export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => {
     const [scrolled, setScrolled] = useState(false);
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const rafId = React.useRef<number | null>(null);
+
+    const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
     useEffect(() => {
         const updateScrolled = () => {
@@ -63,17 +66,38 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
         };
     }, []);
 
+    // Close mobile menu on resize to lg, lock body scroll when open
+    useEffect(() => {
+        const mq = window.matchMedia("(min-width: 1024px)");
+        const handler = () => {
+            if (mq.matches) setIsMobileMenuOpen(false);
+        };
+        mq.addEventListener("change", handler);
+        return () => mq.removeEventListener("change", handler);
+    }, []);
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "";
+        }
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [isMobileMenuOpen]);
+
     return (
+        <>
         <header
             className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                scrolled ? "py-4 bg-white/90 backdrop-blur-md shadow-sm" : "py-6 bg-transparent"
+                "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 sm:px-6 lg:px-12" ,
+                scrolled ? "py-3 sm:py-4 bg-white/90 backdrop-blur-md shadow-sm" : "py-4 sm:py-5 md:py-6 bg-transparent"
             )}
         >
             <div className="container mx-auto flex items-center justify-between">
                 {/* Left: Logo & Badge */}
                 <Link href="/" className="flex items-center gap-3 group" aria-label="UBcare 홈">
-                    <span className={cn("text-2xl font-black tracking-tighter transition-colors text-[#0055FF]", scrolled ? "text-slate-900" : "text-white")}>
+                    <span className={cn("text-xl sm:text-2xl font-black tracking-tighter transition-colors text-[#0055FF]", scrolled ? "text-slate-900" : "text-white")}>
                         UB<span className="text-emerald-500">care</span>
                     </span>
                 </Link>
@@ -153,12 +177,106 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
                         );
                     })}
 
-                    {/* Mobile Menu Toggle */}
-                    <button className={cn("lg:hidden transition-colors", scrolled ? "text-slate-900" : "text-white/80 hover:text-white")}>
-                        <Menu size={24} />
+                    {/* Mobile Menu Toggle — 44px min touch target */}
+                    <button
+                        type="button"
+                        onClick={() => setIsMobileMenuOpen((v) => !v)}
+                        className={cn("lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center -mr-2 transition-colors touch-manipulation", scrolled || isMobileMenuOpen ? "text-slate-900" : "text-white/80 hover:text-white")}
+                        aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
+                        aria-expanded={isMobileMenuOpen}
+                    >
+                        {isMobileMenuOpen ? <X size={24} aria-hidden /> : <Menu size={24} aria-hidden />}
                     </button>
                 </div>
             </div>
         </header>
+
+        {/* Mobile menu overlay + panel */}
+        {isMobileMenuOpen && (
+            <div className="lg:hidden fixed inset-0 z-50" role="dialog" aria-modal="true" aria-label="모바일 메뉴">
+                {/* Backdrop */}
+                <button
+                    type="button"
+                    onClick={closeMobileMenu}
+                    className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+                    aria-label="메뉴 닫기"
+                />
+                {/* Panel: slide from right */}
+                <div className="absolute top-0 right-0 bottom-0 w-full max-w-sm bg-white shadow-2xl flex flex-col overflow-y-auto">
+                    <div className="p-6 pt-14 border-b border-slate-100 flex items-center justify-between">
+                        <span className="text-lg font-bold text-slate-900">메뉴</span>
+                        <button
+                            type="button"
+                            onClick={closeMobileMenu}
+                            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-slate-500 hover:text-slate-900 rounded-full hover:bg-slate-100 touch-manipulation"
+                            aria-label="메뉴 닫기"
+                        >
+                            <X size={24} />
+                        </button>
+                    </div>
+                    <nav className="p-6 flex flex-col gap-1">
+                        {navigation.map((item, idx) => (
+                            <div key={idx} className="border-b border-slate-100 last:border-b-0">
+                                <Link
+                                    href={item.link}
+                                    onClick={closeMobileMenu}
+                                    className="flex items-center justify-between py-4 text-slate-700 font-medium hover:text-[#0055FF] transition-colors"
+                                >
+                                    {item.label}
+                                    {item.subItems && item.subItems.length > 0 && (
+                                        <ChevronDown size={18} className="text-slate-400 shrink-0" />
+                                    )}
+                                </Link>
+                                {item.subItems && item.subItems.length > 0 && (
+                                    <div className="pl-3 pb-3 flex flex-col gap-0.5">
+                                        {item.subItems.map((sub, subIdx) => (
+                                            <Link
+                                                key={subIdx}
+                                                href={getSubLink(item.label, sub)}
+                                                onClick={closeMobileMenu}
+                                                className="py-2.5 text-sm text-slate-500 hover:text-[#0055FF] transition-colors"
+                                            >
+                                                {sub}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        ))}
+                    </nav>
+                    <div className="p-6 mt-auto border-t border-slate-100 flex flex-col gap-3">
+                        {actions.map((action, idx) => {
+                            if (action.type === "language") {
+                                return (
+                                    <button
+                                        key={idx}
+                                        type="button"
+                                        className="flex items-center gap-2 text-sm font-medium text-slate-600"
+                                    >
+                                        <Globe size={18} />
+                                        {action.label}
+                                    </button>
+                                );
+                            }
+                            return (
+                                <button
+                                    key={idx}
+                                    type="button"
+                                    className={cn(
+                                        "w-full py-3.5 rounded-full text-sm font-bold transition-all",
+                                        action.style === "solid-blue"
+                                            ? "bg-[#2563EB] text-white hover:bg-[#1d4ed8]"
+                                            : "bg-slate-100 text-slate-900 hover:bg-slate-200"
+                                    )}
+                                >
+                                    {action.label}
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>
+            </div>
+        )}
+        </>
     );
 };

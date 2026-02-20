@@ -25,7 +25,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   return (
     <>
     <header
-      className="relative w-full py-32 sm:py-32 overflow-hidden min-h-[500px] flex justify-center items-center"
+      className="relative w-full py-32 sm:py-8 overflow-hidden min-h-[500px] sm:min-h-[240px] flex justify-center items-center"
       style={{
         backgroundImage: backgroundImage
           ? `linear-gradient(to bottom, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.5) 100%), url(${backgroundImage})`
@@ -54,7 +54,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
             ))}
           </nav>
         )}
-        <h1 className="text-8xl sm:text-8xl font-bold text-white tracking-tight text-center">
+        <h1 className="text-8xl sm:text-5xl font-bold text-white tracking-tight text-center">
           {title}
         </h1>
       </div>

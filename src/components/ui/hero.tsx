@@ -19,7 +19,7 @@ export default function ShaderShowcase({ headline, subHeadline, ctaPrimary, ctaS
     const containerRef = useRef<HTMLDivElement>(null)
 
     return (
-        <div ref={containerRef} className="h-[50vh] bg-black relative overflow-x-hidden overflow-y-visible flex flex-col justify-center items-center">
+        <div ref={containerRef} className="min-h-[40vh] h-[50vh] sm:min-h-[40vh] md:h-[55vh] bg-black relative overflow-hidden flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12">
 
             {/* Single Mesh Gradient — merged two layers into one to reduce GPU load */}
             <MeshGradient
@@ -28,7 +28,7 @@ export default function ShaderShowcase({ headline, subHeadline, ctaPrimary, ctaS
                 speed={0.25}
             />
 
-            <main className="relative z-20 max-w-[1600px] w-full mx-auto md:mx-0 mt-12 md:mt-0">
+            <main className="relative z-20 max-w-[1600px] w-full mx-auto md:mx-0 mt-8 sm:mt-10 md:mt-0">
                 <NeuralNetworkHero
                     title="데이터로 연결되는<br /> AI 헬스케어"
                     description="UBcare는 국내 1위 EMR 기술력을 바탕으로 병원 경영의 디지털 트랜스포메이션을 선도하며,<br />데이터 중심의 새로운 의료 경험을 설계합니다."

@@ -29,12 +29,12 @@ export function AboutSubPageLayout({
       <PageHeader title={pageTitle} backgroundImage={backgroundImage} />
 
       <section className="max-w-[1600px] mx-auto px-6 pb-24 sm:pb-20 ">
-        <div className="w-full flex-shrink-0 sticky top-[70px] bg-white z-50 lg:top-[70px] pt-16">
+        <div className="w-full flex-shrink-0 sticky top-[70px] sm:top-[35px] bg-white z-50 lg:top-[70px] pt-16 sm:pt-8">
           <p className="flex items-center gap-2 text-sm font-medium text-slate-600 uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-primary-500 shrink-0" />
             {subLabel}
           </p>
-          <h1 className="text-6xl sm:text-5xl lg:text-7xl font-light text-[#333333] leading-tight tracking-tighter whitespace-pre-line ">
+          <h1 className="text-6xl sm:text-3xl lg:text-7xl font-light text-[#333333] leading-tight tracking-tighter whitespace-pre-line ">
             {typeof headline === "string"
               ? headline.split("\n").map((line, i) => (
                   <React.Fragment key={i}>

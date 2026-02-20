@@ -24,7 +24,7 @@ import { ContactCTA } from "@/components/home/ContactCTA";
 import SolutionsGrid from "@/components/home/SolutionGrid";
 import TrustBadges from "@/components/home/TrustBadges";
 import InteractiveDemo from "@/components/home/InteractiveDemo";
-
+import { CompanyPolicy } from "@/components/home/CompanyPolicy";
 
 export default function Home() {
   const data = renewalData as unknown as RenewalData;
@@ -41,7 +41,7 @@ export default function Home() {
   const contactProps = getProps<ContactCTAProps>("contact");
 
   return (
-    <div className="flex flex-col w-full bg-white min-h-screen text-slate-900">
+    <div className="flex flex-col w-full bg-white min-h-screen text-slate-900 overflow-x-hidden">
 
       {/* 1. Hero Section (Shader) */}
       {heroProps && <ShaderShowcase {...heroProps} />}
@@ -87,9 +87,8 @@ export default function Home() {
       )}
 
       {/* 6-1. Company Policy (UB Life, Business, Recruit) */}
-      {/* <CompanyPolicy /> */}
+      <CompanyPolicy />
 
-      
 
       {/* 7. Contact CTA */}
       {contactProps && (

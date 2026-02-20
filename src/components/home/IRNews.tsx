@@ -45,23 +45,23 @@ export const IRNews: React.FC<IRNewsProps> = ({ headline, stockPrice, stockChang
     const displayChange = realTimeData?.change || stockChange;
 
     return (
-        <section className="py-24 bg-white">
-            <div className="container max-w-[1600px] mx-auto px-6">
+        <section className="py-16 sm:py-20 md:py-24 bg-white">
+            <div className="container max-w-[1600px] mx-auto px-4 sm:px-6">
                 
-                <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-                    <div className="space-y-4">
-                        <span className="text-sm font-bold tracking-[0.2em] text-[#0055FF] uppercase">Market Info</span>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#0A0A0F]">{headline}</h2>
+                <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-10 sm:mb-12 md:mb-16">
+                    <div className="space-y-2 sm:space-y-4">
+                        <span className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#0055FF] uppercase">Market Info</span>
+                        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0A0A0F]">{headline}</h2>
                     </div>
                 </div>
 
                 <div
-                    className="grid grid-cols-1 lg:grid-cols-3 gap-x-6 gap-y-6"
+                    className="grid grid-cols-1 lg:grid-cols-3 gap-x-4 sm:gap-x-6 gap-y-4 sm:gap-y-6"
                     style={{ overflow: "hidden" }}
                 >
 
                  
-                    <div className="p-8 rounded-2xl bg-blue-600 text-white shadow-xl shadow-blue-500/20 flex flex-col justify-between h-full relative overflow-hidden group">
+                    <div className="p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-blue-600 text-white shadow-xl shadow-blue-500/20 flex flex-col justify-between h-full relative overflow-hidden group">
                         <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 group-hover:bg-white/20 transition-colors" />
 
                         <div>
@@ -69,7 +69,7 @@ export const IRNews: React.FC<IRNewsProps> = ({ headline, stockPrice, stockChang
                                 <TrendingUp size={20} />
                                 <span className="text-sm font-bold uppercase tracking-wider">KOSDAQ: 032620</span>
                             </div>
-                            <div className="text-4xl font-black text-white mb-2">{displayPrice}</div>
+                            <div className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-2">{displayPrice}</div>
                             <div className="text-blue-200 font-medium flex items-center gap-1">
                                 {displayChange} <span className="text-white/60 text-sm font-normal">vs yesterday</span>
                             </div>
@@ -83,7 +83,7 @@ export const IRNews: React.FC<IRNewsProps> = ({ headline, stockPrice, stockChang
                             <motion.a
                                 key={idx}
                                 href="#"
-                                className="block p-6 rounded-[16px] bg-slate-50 hover:bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5 transition-all group"
+                                className="block p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-[16px] bg-slate-50 hover:bg-white border border-slate-100 hover:border-blue-200 hover:shadow-lg hover:shadow-blue-500/5 transition-all group"
                                 initial={{ opacity: 0, y: 16 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, amount: 0.2 }}

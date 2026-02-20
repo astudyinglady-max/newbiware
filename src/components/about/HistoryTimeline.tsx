@@ -30,8 +30,8 @@ export const HistoryTimeline: React.FC<HistoryTimelineProps> = ({
     <section className="bg-white text-slate-900  py-20 sm:py-20">
       <div className="container min-w-[1600px] mx-auto">
         {periods.map((period) => (
-          <div key={period.id} className="mb-20 last:mb-0 flex items-start justify-start gap-30">
-            <div className="mb-8 sticky top-[320px] bg-white z-50 w-[340px]">
+          <div key={period.id} className="mb-20 last:mb-0 flex items-start justify-start gap-30 sm:gap-10 sm:flex-col sm:items-start sm:justify-start">
+            <div className="mb-8 sticky top-[320px] sm:top-[160px] sm:w-full bg-white z-50 w-[340px]">
               <h2 className="text-2xl sm:text-2xl font-bold text-slate-700">
                 {period.title ?? period.range}
               </h2>

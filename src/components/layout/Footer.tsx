@@ -14,7 +14,7 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ brandTextBig, copyright, columns }) => {
     return (
-        <footer className="relative bg-primary-950 text-white pt-24 pb-12 overflow-hidden">
+        <footer className="relative bg-primary-950 text-white pt-16 sm:pt-20 md:pt-24 pb-8 sm:pb-10 md:pb-12 overflow-hidden">
             {/* Big Brand Text Background */}
             <div className="absolute top-0 left-0 w-full h-full pointer-events-none opacity-5 flex items-center justify-center overflow-hidden">
                 <span className="text-[20vw] font-black tracking-tighter leading-none whitespace-nowrap select-none">
@@ -22,11 +22,11 @@ export const Footer: React.FC<FooterProps> = ({ brandTextBig, copyright, columns
                 </span>
             </div>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+            <div className="container mx-auto px-4 sm:px-6 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 md:gap-12 mb-10 sm:mb-12 md:mb-16">
                     {/* Brand Column */}
                     <div className="col-span-1">
-                        <h2 className="text-2xl font-bold mb-6">{brandTextBig}</h2>
+                        <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6">{brandTextBig}</h2>
                         <p className="text-white/60 text-sm leading-relaxed">
                             Part of GC Family.<br />
                             Leading Digital Healthcare Platform.
@@ -36,7 +36,7 @@ export const Footer: React.FC<FooterProps> = ({ brandTextBig, copyright, columns
                     {/* Links Columns */}
                     {columns.map((col, idx) => (
                         <div key={idx} className="col-span-1">
-                            <h3 className="text-3xl font-semibold mb-6 text-primary-100">{col.title}</h3>
+                            <h3 className="text-xl sm:text-2xl md:text-3xl font-semibold mb-4 sm:mb-6 text-primary-100">{col.title}</h3>
                             <ul className="space-y-4">
                                 {col.links.map((link, linkIdx) => (
                                     <li key={linkIdx}>
