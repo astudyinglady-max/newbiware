@@ -25,7 +25,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   return (
     <>
     <header
-      className="relative w-full py-32 sm:py-8 overflow-hidden min-h-[500px] sm:min-h-[240px] flex justify-center items-center"
+      className="relative w-full py-32 sm:py-8 overflow-hidden min-h-[500px] sm:min-h-[240px] md:min-h-[320px] lg:min-h-[400px] flex justify-center items-center"
       style={{
         backgroundImage: backgroundImage
           ? `linear-gradient(to bottom, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.5) 100%), url(${backgroundImage})`
@@ -35,26 +35,8 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
       }}
     >
       <div className="container mx-auto px-6 relative z-10">
-        {breadcrumbs && breadcrumbs.length > 0 && (
-          <nav
-            className="flex items-center gap-2 text-sm text-white/70 mb-6 flex-wrap"
-            aria-label="breadcrumb"
-          >
-            {breadcrumbs.map((item, i) => (
-              <span key={i} className="flex items-center gap-2">
-                {i > 0 && <ChevronRight className="w-4 h-4 text-white/50" />}
-                {item.href ? (
-                  <Link href={item.href} className="hover:text-white transition-colors">
-                    {item.label}
-                  </Link>
-                ) : (
-                  <span className="text-white font-medium">{item.label}</span>
-                )}
-              </span>
-            ))}
-          </nav>
-        )}
-        <h1 className="text-8xl sm:text-5xl font-bold text-white tracking-tight text-center">
+        
+        <h1 className="text-8xl sm:text-4xl lg:text-4xl md:text-4xl font-bold text-white tracking-tight text-center">
           {title}
         </h1>
       </div>

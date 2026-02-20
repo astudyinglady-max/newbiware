@@ -90,12 +90,12 @@ export default function NeuralNetworkHero({
 
        
 
-        <ul className="mt-8 sm:mt-10 md:mt-12 flex flex-wrap gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-bold tracking-[0.1em] text-white uppercase p-1">
+        <ul className="mt-8 sm:mt-1 md:mt-12 flex flex-wrap gap-4 sm:gap-6 md:gap-10 text-xs sm:text-sm font-bold tracking-[0.1em] text-white uppercase p-1">
           {microDetails?.map((detail, index) => (
             <li 
               key={index} 
               ref={el => { microItemsRefs.current[index] = el; }} 
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 sm:gap-1 md:gap-3"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-[#ffffff]/50" /> {detail}
             </li>

@@ -8,6 +8,7 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            /* Tailwind v4는 브레이크포인트를 globals.css @theme에서 사용합니다 */
             maxWidth: {
                 container: "1280px",
             },
