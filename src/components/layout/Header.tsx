@@ -21,7 +21,7 @@ const SUB_LINK_MAP: Record<string, Record<string, string>> = {
     "투자정보": "/about/ir",
     "내부정보관리규정": "/about/policy",
     "회사현황": "/about/company-status",
-    "전국대리점": "/about/branches",
+    "전국대리점": "/about/map",
   },
   Business: {
     "EMR (병/의원)": "/solutions/medical",
@@ -74,7 +74,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
                 {/* Left: Logo & Badge */}
                 <Link href="/" className="flex items-center gap-3 group" aria-label="UBcare 홈">
                     <span className={cn("text-2xl font-black tracking-tighter transition-colors text-[#0055FF]", scrolled ? "text-slate-900" : "text-white")}>
-                        UBcare
+                        UB<span className="text-emerald-500">care</span>
                     </span>
                 </Link>
                 {/* Center: GNB */}

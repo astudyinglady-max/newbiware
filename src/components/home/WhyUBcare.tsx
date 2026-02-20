@@ -14,7 +14,7 @@ export const WhyUBcare: React.FC<WhyUBcareProps> = ({ headline, subHeadline, fea
     const icons = [ShieldCheck, TrendingUp, Users, CheckCircle2];
 
     return (
-        <section className="py-24 bg-slate-50 relative border-y border-slate-200">
+        <section className="py-24 bg-white relative border-y border-slate-100">
             <div className="container max-w-[1600px] mx-auto px-6">
                 <div className="flex flex-col lg:flex-row gap-16 items-start">
 

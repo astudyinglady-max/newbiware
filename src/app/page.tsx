@@ -20,7 +20,6 @@ import { StatsBar } from "@/components/home/StatsBar";
 import { SynergySection } from "@/components/home/SynergySection";
 import { WhyUBcare } from "@/components/home/WhyUBcare";
 import { IRNews } from "@/components/home/IRNews";
-import { CompanyPolicy } from "@/components/home/CompanyPolicy";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import SolutionsGrid from "@/components/home/SolutionGrid";
 import TrustBadges from "@/components/home/TrustBadges";
@@ -88,7 +87,7 @@ export default function Home() {
       )}
 
       {/* 6-1. Company Policy (UB Life, Business, Recruit) */}
-      <CompanyPolicy />
+      {/* <CompanyPolicy /> */}
 
       
 
