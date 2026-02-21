@@ -27,24 +27,24 @@ export const HistoryTimeline: React.FC<HistoryTimelineProps> = ({
   baseDetailPath = "/about/history",
 }) => {
   return (
-    <section className="bg-white text-slate-900  py-20 sm:py-20">
+    <section className="bg-white text-slate-900  py-20 sm:py-10">
       <div className="container min-w-[1600px] mx-auto">
         {periods.map((period) => (
-          <div key={period.id} className="mb-20 last:mb-0 flex items-start justify-start gap-30 sm:gap-10 sm:flex-col sm:items-start sm:justify-start">
-            <div className="mb-8 sticky top-[320px] sm:top-[160px] sm:w-full bg-white z-50 w-[340px]">
+          <div key={period.id} className="mb-20 last:mb-0 flex items-start justify-start gap-30 sm:gap-4 sm:flex-col sm:items-start sm:justify-start">
+            <div className="mb-8 sm:mb-4 sticky top-[320px] sm:top-[180px] sm:w-full bg-white z-50 w-[340px]">
               <h2 className="text-2xl sm:text-2xl font-bold text-slate-700">
                 {period.title ?? period.range}
               </h2>
               {period.title && (
-                <p className="text-5xl sm:text-6xl font-extralight text-emerald-400 mt-8">{period.range}</p>
+                <p className="text-5xl sm:text-3xl font-extralight text-emerald-400 mt-8 sm:mt-5">{period.range}</p>
               )}
             </div>
-            <ul className="divide-y divide-slate-200 -mt-8">
+            <ul className="divide-y divide-slate-200 -mt-8 sm:-mt-1">
               {period.milestones.map((m) => (
                 <li key={m.id} className="group">
-                  <Link
+                  <p
                     href={`${baseDetailPath}/${m.id}`}
-                    className="flex items-center gap-4 py-7 text-left hover:bg-slate-50 -mx-4 px-4 rounded-lg transition-colors "
+                    className="flex items-center gap-4 py-7 sm:py-4 text-left hover:bg-slate-50 -mx-4 px-4 rounded-lg transition-colors "
                   >
                     <span className="text-slate-500 font-medium text-xl shrink-0 w-20">
                       {m.date}
@@ -53,7 +53,7 @@ export const HistoryTimeline: React.FC<HistoryTimelineProps> = ({
                       {m.title}
                     </span>
                     
-                  </Link>
+                  </p>
                 </li>
               ))}
             </ul>

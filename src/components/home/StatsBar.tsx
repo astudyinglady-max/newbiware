@@ -26,7 +26,7 @@ export const StatsBar: React.FC<StatsBarProps> = ({ items }) => {
           {displayStats.map((stat, idx) => (
             <motion.div
               key={idx}
-              className={`relative px-2 sm:px-4 flex flex-col items-center text-center group ${
+              className={`relative px-2 sm:px-4 flex flex-col items-center justify-center text-center group ${
                 idx !== displayStats.length - 1 ? 'md:border-r border-black/5' : ''
               }`}
               initial={{ opacity: 0, y: 16 }}

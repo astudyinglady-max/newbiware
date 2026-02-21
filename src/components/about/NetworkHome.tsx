@@ -218,8 +218,8 @@ const NetworkHome: React.FC = () => {
 
 
       {/* Hero / Map Section */}
-      <section className="relative overflow-hidden pt-12 pb-20 bg-gradient-to-b from-blue-50/50 to-white mt-24">
-        <div className="container mx-auto px-6">
+      <section className="relative overflow-hidden pt-12 pb-20 sm:pb-10 bg-gradient-to-b from-blue-50/50 to-white mt-24 sm:mt-12">
+        <div className="container mx-auto px-6 sm:px-0">
           <div className="w-full flex justify-between items-end">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
@@ -271,7 +271,7 @@ const NetworkHome: React.FC = () => {
       <MapSearchSection />
 
       {/* Details Section */}
-      <main className="container mx-auto px-6 py-12">
+      <main className="container mx-auto px-6 py-12 ">
         <div className="max-w-6xl mx-auto">
           {regions.map((region, idx) => (
             <motion.div

@@ -115,8 +115,8 @@ export const MapSearchSection: React.FC = () => {
   }, [selectedId]);
 
   return (
-    <section className="bg-white py-12">
-      <div className="container mx-auto px-6">
+    <section className="bg-white py-12 sm:py-0">
+      <div className="container mx-auto px-6 sm:px-0">
         
 
         <div className="flex flex-col lg:flex-row border border-gray-200 rounded-3xl overflow-hidden shadow-2xl h-[750px] bg-white">

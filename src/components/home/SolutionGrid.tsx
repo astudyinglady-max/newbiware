@@ -79,7 +79,7 @@ const SolutionsGrid: React.FC = () => {
                   <motion.a
                     key={idx}
                     href="#"
-                    className={`group relative block rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 bg-slate-800/60 backdrop-blur-sm border border-white/10 hover:border-blue-400/30 hover:bg-slate-800/80 transition-all duration-300 ${isEven ? "sm:relative sm:-mt-12" : ""}`}
+                    className={`group relative block rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 bg-slate-800/60 backdrop-blur-sm border border-white/10 hover:border-blue-400/30 hover:bg-slate-800/80 transition-all duration-300 ${isEven ? "sm:relative sm:mt-0 " : ""}`}
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}

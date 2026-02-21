@@ -18,9 +18,9 @@ export default function MapPage() {
         </>
       }
     >
-      <div>
+
         <NetworkHomeDynamic />
-      </div>
+
     </AboutSubPageLayout>
   );
 }

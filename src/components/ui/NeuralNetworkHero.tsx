@@ -69,8 +69,8 @@ export default function NeuralNetworkHero({
   return (
     <section ref={sectionRef} className="relative min-h-[60vh] h-[70vh] sm:min-h-[65vh] w-full flex flex-col justify-center touch-pan-y">
     
-      <div className="relative mx-auto flex max-w-[1600px] w-full flex-col items-start gap-5 sm:gap-6 md:gap-8 pb-16 sm:pb-20 md:pb-24 pt-12 sm:pt-16 md:pt-20 px-4 sm:px-6">
-        <div ref={badgeRef} className="inline-flex items-center gap-3 rounded-full border border-black/5 bg-white/80 px-4 py-2 ">
+      <div className="relative mx-auto flex max-w-[1600px] w-full flex-col items-start gap-5 sm:gap-0 md:gap-5 pb-16 sm:pb-20 md:pb-24 pt-12 sm:pt-16 md:pt-20 px-4 sm:px-6">
+        <div ref={badgeRef} className="inline-flex items-center gap-3 rounded-full border border-black/5 bg-white/80 px-4 py-2 sm:px-2 sm:py-1 md:px-4 md:py-2 sm:mb-4 md:mb-4">
           <span className="text-[14px] font-bold uppercase tracking-[0.2em] text-[#0055FF]">{badgeLabel}</span>
           <div className="w-1 h-1 rounded-full bg-black/20" />
           <span className="text-[14px]  font-medium tracking-tight text-black/70">{badgeText}</span>

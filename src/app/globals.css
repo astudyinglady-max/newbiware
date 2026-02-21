@@ -89,6 +89,10 @@ body {
    
 }
 
+*{
+  word-break: keep-all;
+}
+
 /* Promote heavy sections to own compositor layer for smoother scroll */
 section,
 [data-section] {

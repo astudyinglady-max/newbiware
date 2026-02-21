@@ -24,7 +24,7 @@ export function InvestmentTabs() {
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              "w-full px-7 py-7 text-[18px] font-bold transition-colors",
+              "w-full px-7 py-7 sm:px-0 sm:py-4 text-[18px] font-bold transition-colors",
               activeTab === tab.id
                 ? "text-primary-500 border-b-2 border-primary-500 bg-primary-50/50"
                 : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"

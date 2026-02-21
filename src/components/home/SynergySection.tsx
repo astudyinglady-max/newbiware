@@ -21,7 +21,7 @@ export const SynergySection: React.FC<SynergySectionProps> = ({ headline, center
                     <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4">{headline}</h2>
 
                     {/* 헤드라인 아래 빛 퍼짐 효과 */}
-                    <div className="w-[40rem] max-w-full h-40 relative mx-auto z-0">
+                    <div className="w-[40rem] sm:w-[100%] max-w-full h-40 relative mx-auto z-0">
                         {/* 글로우 라인 */}
                         <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
                         <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />

@@ -19,7 +19,7 @@ const TrustBadges: React.FC = () => {
           {badges.map((badge, idx) => (
             <motion.div
               key={idx}
-              className="flex w-[40%] min-w-[140px] lg:w-auto items-center gap-4 opacity-50 hover:opacity-100 transition-all duration-500 cursor-default group"
+              className="flex w-[40%] sm:w-[80%] min-w-[140px] sm:min-w-[180px] lg:w-auto items-center gap-4 opacity-50 hover:opacity-100 transition-all duration-500 cursor-default group"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
