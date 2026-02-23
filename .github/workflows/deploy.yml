@@ -72,6 +72,8 @@ jobs:
           GITHUB_ACTIONS: "true"
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
+      - name: Add .nojekyll
+        run: touch out/.nojekyll
       - name: Verify out directory
         run: ls -la out && echo "--- out exists, $(find out -type f | wc -l) files ---"
       - name: Upload artifact
