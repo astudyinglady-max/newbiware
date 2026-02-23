@@ -10,3 +10,4 @@ const NetworkHome = dynamic(
 export default function NetworkHomeDynamic() {
   return <NetworkHome />;
 }
+
