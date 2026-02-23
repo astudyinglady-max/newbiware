@@ -28,13 +28,13 @@ export const HistoryTimeline: React.FC<HistoryTimelineProps> = ({
 }) => {
   return (
     <section className="bg-white text-slate-900 py-14 sm:py-16 md:py-20">
-      <div className="container max-w-[1600px] mx-auto px-4 sm:px-6">
+      <div className="container max-w-[1600px] mx-auto px-6 md:px-0">
         {periods.map((period) => (
           <div
             key={period.id}
-            className="mb-14 sm:mb-16 md:mb-20 last:mb-0 flex flex-col md:flex-row items-start justify-start gap-8 sm:gap-10 md:gap-14"
+            className="mb-14 sm:mb-16 md:mb-20 last:mb-0 flex flex-col gap-8 sm:gap-10 md:grid md:grid-cols-[3fr_7fr] md:items-start md:gap-14"
           >
-            <div className="mb-4 sm:mb-6 md:mb-8 md:sticky md:top-[180px] bg-white z-10 w-full md:w-[320px] lg:w-[340px]">
+            <div className="mb-4 sm:mb-6 md:mb-8 md:sticky md:top-[270px] bg-white z-10 w-full min-w-0">
               <h2 className="text-xl sm:text-2xl font-bold text-slate-700">
                 {period.title ?? period.range}
               </h2>
@@ -44,7 +44,7 @@ export const HistoryTimeline: React.FC<HistoryTimelineProps> = ({
                 </p>
               )}
             </div>
-            <ul className="w-full divide-y divide-slate-200">
+            <ul className="w-full min-w-0 divide-y divide-slate-200">
               {period.milestones.map((m) => (
                 <li key={m.id} className="group">
                   <Link

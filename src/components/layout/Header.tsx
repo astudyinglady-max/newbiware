@@ -45,7 +45,9 @@ function getSubLink(parentLabel: string, subLabel: string): string {
 export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => {
     const [scrolled, setScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [openDesktopMenu, setOpenDesktopMenu] = useState<number | null>(null);
     const rafId = React.useRef<number | null>(null);
+    const desktopNavRef = React.useRef<HTMLDivElement | null>(null);
 
     useEffect(() => {
         const updateScrolled = () => {
@@ -84,6 +86,24 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
         return () => mq.removeEventListener("change", handleChange);
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            if (!desktopNavRef.current) return;
+            if (!desktopNavRef.current.contains(event.target as Node)) {
+                setOpenDesktopMenu(null);
+            }
+        };
+        const handleEsc = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setOpenDesktopMenu(null);
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        document.addEventListener("keydown", handleEsc);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener("keydown", handleEsc);
+        };
+    }, []);
+
     return (
         <header
             className={cn(
@@ -99,36 +119,50 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
                     </span>
                 </Link>
                 {/* Center: GNB */}
-                <nav className="hidden xl:flex items-center gap-8">
+                <nav ref={desktopNavRef} className="hidden xl:flex items-center gap-8">
                     {navigation.map((item, idx) => (
-                        <div key={idx} className="relative group">
-                            <Link
-                                href={item.link}
-                                className={cn(
-                                    "flex items-center gap-1 text-sm font-medium transition-colors py-2",
-                                    scrolled ? "text-slate-600 hover:text-blue-600" : "text-white/80 hover:text-white"
-                                )}
-                            >
-                                {item.label}
-                                {item.subItems && (
+                        <div key={idx} className="relative">
+                            {item.subItems && item.subItems.length > 0 ? (
+                                <button
+                                    type="button"
+                                    onClick={() => setOpenDesktopMenu(openDesktopMenu === idx ? null : idx)}
+                                    className={cn(
+                                        "flex items-center gap-1 text-sm font-medium transition-colors py-2",
+                                        scrolled ? "text-slate-600 hover:text-blue-600" : "text-white/80 hover:text-white"
+                                    )}
+                                    aria-haspopup="menu"
+                                    aria-expanded={openDesktopMenu === idx}
+                                >
+                                    {item.label}
                                     <ChevronDown
                                         size={14}
                                         className={cn(
-                                            "opacity-50 group-hover:opacity-100 transition-opacity",
-                                            scrolled ? "text-slate-400 group-hover:text-blue-600" : "text-white/50 group-hover:text-white"
+                                            "opacity-60 transition-transform",
+                                            openDesktopMenu === idx && "rotate-180",
+                                            scrolled ? "text-slate-400" : "text-white/50"
                                         )}
                                     />
-                                )}
-                            </Link>
+                                </button>
+                            ) : (
+                                <Link
+                                    href={item.link}
+                                    className={cn(
+                                        "flex items-center gap-1 text-sm font-medium transition-colors py-2",
+                                        scrolled ? "text-slate-600 hover:text-blue-600" : "text-white/80 hover:text-white"
+                                    )}
+                                >
+                                    {item.label}
+                                </Link>
+                            )}
 
-                            {/* Dropdown */}
-                            {item.subItems && (
-                                <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0 overflow-hidden">
+                            {item.subItems && item.subItems.length > 0 && openDesktopMenu === idx && (
+                                <div className="absolute top-full left-0 mt-2 w-48 bg-white border border-slate-200 rounded-lg shadow-xl transition-all duration-200 overflow-hidden">
                                     <div className="py-2">
                                         {item.subItems.map((sub, subIdx) => (
                                             <Link
                                                 key={subIdx}
                                                 href={getSubLink(item.label, sub)}
+                                                onClick={() => setOpenDesktopMenu(null)}
                                                 className="block px-4 py-2 text-sm text-slate-600 hover:bg-slate-50 hover:text-blue-600 transition-colors"
                                             >
                                                 {sub}
