@@ -34,27 +34,25 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-primary-950 text-white selection:bg-primary-500 selection:text-white`}
       >
-        
-          <Header
-            logo={renewalData.layout.header.logo}
-            navigation={renewalData.layout.header.navigation}
-            actions={renewalData.layout.header.actions}
-          />
+        <Header
+          logo={renewalData.layout.header.logo}
+          navigation={renewalData.layout.header.navigation}
+          actions={renewalData.layout.header.actions}
+        />
 
-          <main className="min-h-screen">
-            {children}
-          </main>
+        <main className="min-h-screen">
+          {children}
+        </main>
 
-          {renewalData.layout.floatingDock.enabled && (
-            <DockAndChat items={renewalData.layout.floatingDock.items} />
-          )}
+        {renewalData.layout.floatingDock.enabled && (
+          <DockAndChat items={renewalData.layout.floatingDock.items} />
+        )}
 
-          <Footer
-            brandTextBig={renewalData.layout.footer.brandTextBig}
-            copyright={renewalData.layout.footer.copyright}
-            columns={renewalData.layout.footer.columns}
-          />
-        
+        <Footer
+          brandTextBig={renewalData.layout.footer.brandTextBig}
+          copyright={renewalData.layout.footer.copyright}
+          columns={renewalData.layout.footer.columns}
+        />
       </body>
     </html>
   );

@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { cn } from "@/lib/utils";
 import { StockPriceChart, DEFAULT_STOCK_DATA } from "./StockPriceChart";
 import { FinancialHorizontalBarChart } from "./FinancialHorizontalBarChart";
+import PillMorphTabs from "@/components/ui/pill-morph-tabs";
 
 const TABS = [
   { id: "stock", label: "주가정보" },
@@ -13,34 +14,37 @@ const TABS = [
 ] as const;
 
 export function InvestmentTabs() {
-  const [activeTab, setActiveTab] = useState<(typeof TABS)[number]["id"]>("stock");
+  const tabItems = [
+    {
+      value: "stock",
+      label: "주가정보",
+      panel: <StockInfoTab />
+    },
+    {
+      value: "financial", 
+      label: "재무정보",
+      panel: <FinancialInfoTab />
+    },
+    {
+      value: "disclosure",
+      label: "공시", 
+      panel: <DisclosureTab />
+    },
+    {
+      value: "shareholder",
+      label: "주주공고",
+      panel: <ShareholderTab />
+    }
+  ];
 
   return (
     <div className="w-full mt-12">
-      {/* 탭 네비게이션 */}
-      <div className="flex justify-between border-b border-slate-200 mb-8">
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={cn(
-              "w-full px-7 py-7 sm:px-0 sm:py-4 text-[18px] font-bold transition-colors",
-              activeTab === tab.id
-                ? "text-primary-500 border-b-2 border-primary-500 bg-primary-50/50"
-                : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
-            )}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
-
-      {/* 탭 컨텐츠 */}
-      <div className="min-h-[400px]">
-        {activeTab === "stock" && <StockInfoTab />}
-        {activeTab === "financial" && <FinancialInfoTab />}
-        {activeTab === "disclosure" && <DisclosureTab />}
-        {activeTab === "shareholder" && <ShareholderTab />}
+      <div className="w-full flex justify-center">
+        <PillMorphTabs 
+          items={tabItems}
+          defaultValue="stock"
+          className="w-full"
+        />
       </div>
     </div>
   );
@@ -57,14 +61,14 @@ function StockInfoTab() {
             <h3 className="text-[18px] font-semibold text-slate-700 mb-1">
               유비케어 (032620)
             </h3>
-            <p className="text-[18px] text-slate-500 mb-6">2026/02/19 03:26:11 장마감</p>
+            <p className="text-[14px] text-slate-500 mb-6">2026/02/19 03:26:11 장마감</p>
             <div className="flex items-baseline gap-3 mb-2">
               <span className="text-4xl sm:text-5xl font-bold text-slate-900">
                 4,090
               </span>
               <span className="text-[18px] font-medium text-slate-600">원</span>
             </div>
-            <p className="text-[18px] text-slate-600 mb-6">
+            <p className="text-[14px] text-slate-600 mb-6">
               어제보다 <span className="text-red-500 font-medium">0 ▼ (0%)</span>
             </p>
             <div className="grid grid-cols-2 gap-4 text-[18px]">
@@ -88,11 +92,11 @@ function StockInfoTab() {
           </div>
           {/* 우측: 시장지수 + 차트 */}
           <div>
-            <div className="flex flex-wrap gap-4 text-[18px] mb-4">
+            <div className="flex flex-wrap gap-4 text-[14px] mb-4 justify-center">
               <span className="text-slate-600">KOSPI 2,507.01 -15.26 (-0.28%)</span>
               <span className="text-slate-600">KOSDAQ 1,106.08 -19.91 (-1.77%)</span>
             </div>
-            <div className="min-h-[220px] h-[220px] rounded-xl bg-transparent border border-sky-200/50 overflow-hidden flex items-stretch">
+            <div className="min-h-[220px] h-[220px] rounded-xl bg-transparent overflow-hidden flex items-stretch mt-[50px]">
               <StockPriceChart
                 data={DEFAULT_STOCK_DATA}
                 width={400}

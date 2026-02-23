@@ -76,22 +76,22 @@ const InteractiveDemo: React.FC = () => {
   }, [activeStep]);
 
   return (
-    <section className="py-16 sm:py-20 md:py-24 bg-white overflow-hidden touch-pan-y">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6">
+    <section className="py-24 bg-white overflow-hidden touch-pan-y">
+      <div className="max-w-[1600px] mx-auto px-6">
 
         {/* Header */}
 
 
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 sm:gap-8 mb-10 sm:mb-12 md:mb-16">
-          <div className="space-y-2 sm:space-y-4">
-            <span className="text-xs sm:text-sm font-bold tracking-[0.2em] text-[#0055FF] uppercase">PRODUCT WORKFLOW</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0A0A0F]">EMR 하나로 연결되는 의료 경험</h2>
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <div className="space-y-4">
+            <span className="text-sm font-bold tracking-[0.2em] text-[#0055FF] uppercase">PRODUCT WORKFLOW</span>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#0A0A0F]">EMR 하나로 연결되는 의료 경험</h2>
           </div>
 
         </div>
 
         {/* Carousel Content — touch-action: pan-y so vertical scroll is not captured by horizontal drag */}
-        <div className="relative bg-[#F8FAFF] rounded-xl sm:rounded-[16px] overflow-hidden min-h-[380px] sm:min-h-[450px] md:min-h-[500px] border border-black/5 touch-pan-y">
+        <div className="relative bg-[#F8FAFF] rounded-[16px] overflow-hidden min-h-[500px] border border-black/5 touch-pan-y">
           <AnimatePresence initial={false} custom={direction}>
             <motion.div
               key={activeStep}
@@ -120,12 +120,12 @@ const InteractiveDemo: React.FC = () => {
               }}
             >
               {/* Left Content */}
-              <div className="p-5 sm:p-6 md:p-10 lg:p-16 flex flex-col justify-center h-full relative z-10 bg-[#F8FAFF]">
+              <div className="p-8 md:p-16 flex flex-col justify-center h-full relative z-10 bg-[#F8FAFF]">
 
-                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#0A0A0F] leading-tight mb-4 sm:mb-6 md:mb-8">
+                 <h3 className="text-3xl font-bold text-[#0A0A0F] leading-tight mb-8">
                     {steps[activeStep].title}
                  </h3>
-                 <p className="text-black/60 text-sm sm:text-base md:text-lg mb-6 sm:mb-8 md:mb-10 max-w-md">
+                 <p className="text-black/60 text-lg mb-10 max-w-md">
                     {steps[activeStep].description}
                  </p>
                  <div>
@@ -136,7 +136,7 @@ const InteractiveDemo: React.FC = () => {
               </div>
 
               {/* Right Image */}
-              <div className="relative h-52 sm:h-64 md:h-72 lg:h-full overflow-hidden">
+              <div className="relative h-64 lg:h-full overflow-hidden">
                 <img 
                     src={steps[activeStep].imageUrl} 
                     alt={steps[activeStep].title} 
@@ -149,7 +149,7 @@ const InteractiveDemo: React.FC = () => {
         </div>
 
         {/* Controls */}
-        <div className="mt-6 sm:mt-8 flex items-center gap-4 sm:gap-6 md:gap-8">
+        <div className="mt-8 flex items-center gap-8">
             {/* Progress Bar */}
             <div className="flex-1 h-[2px] bg-black/10 rounded-full overflow-hidden relative">
                 <motion.div
@@ -165,18 +165,18 @@ const InteractiveDemo: React.FC = () => {
                 <button
                     type="button"
                     onClick={() => paginate(-1)}
-                    className="min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#F0F4FF] text-[#0055FF] flex items-center justify-center hover:bg-[#0055FF] hover:text-white transition-all disabled:opacity-50 touch-manipulation"
+                    className="w-10 h-10 rounded-full bg-[#F0F4FF] text-[#0055FF] flex items-center justify-center hover:bg-[#0055FF] hover:text-white transition-all disabled:opacity-50"
                     aria-label="이전 단계"
                 >
-                    <ChevronLeft className="w-5 h-5 shrink-0" aria-hidden />
+                    <ChevronLeft className="w-5 h-5" aria-hidden />
                 </button>
                 <button
                     type="button"
                     onClick={() => paginate(1)}
-                    className="min-w-[44px] min-h-[44px] w-11 h-11 rounded-full bg-[#F0F4FF] text-[#0055FF] flex items-center justify-center hover:bg-[#0055FF] hover:text-white transition-all touch-manipulation"
+                    className="w-10 h-10 rounded-full bg-[#F0F4FF] text-[#0055FF] flex items-center justify-center hover:bg-[#0055FF] hover:text-white transition-all"
                     aria-label="다음 단계"
                 >
-                    <ChevronRight className="w-5 h-5 shrink-0" aria-hidden />
+                    <ChevronRight className="w-5 h-5" aria-hidden />
                 </button>
             </div>
         </div>

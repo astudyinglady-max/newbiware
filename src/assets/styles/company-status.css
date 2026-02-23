@@ -1,0 +1,71 @@
+.privacy-text-wrap {
+  margin: 50px 0 120px;
+}
+.privacy-text-wrap h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin: 4rem;
+}
+.privacy-text-wrap h2 {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+.privacy-text-wrap h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+.privacy-text-wrap p, .privacy-text-wrap li {
+  font-size: 18px;
+  word-break: keep-all;
+}
+.privacy-text-wrap p {
+  margin-bottom: 35px;
+}
+.privacy-text-wrap ul {
+  margin-bottom: 35px;
+}
+.privacy-text-wrap ul > li {
+  padding-left: 30px;
+  position: relative;
+  color: var(--color-gray-600);
+}
+.privacy-text-wrap ul > li > span {
+  position: absolute;
+  left: 6px;
+  top: 0;
+}
+.privacy-text-wrap ul > li ol li {
+  color: var(--color-gray-600);
+}
+.privacy-text-wrap dl dt, .privacy-text-wrap dl dd {
+  font-size: 18px;
+  color: var(--color-gray-600);
+}
+
+.company-status-page {
+  margin: 50px 0 120px;
+}
+.company-status-page__content {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 24px;
+}
+.company-status-page .company-img {
+  overflow: hidden;
+  border-radius: 16px;
+  width: 100%;
+}
+.company-status-page .company-img img {
+  width: 100%;
+}
+.company-status-page .company-map-info {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/*# sourceMappingURL=company-status.css.map */

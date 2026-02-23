@@ -20,11 +20,12 @@ import { StatsBar } from "@/components/home/StatsBar";
 import { SynergySection } from "@/components/home/SynergySection";
 import { WhyUBcare } from "@/components/home/WhyUBcare";
 import { IRNews } from "@/components/home/IRNews";
+import { CompanyPolicy } from "@/components/home/CompanyPolicy";
 import { ContactCTA } from "@/components/home/ContactCTA";
 import SolutionsGrid from "@/components/home/SolutionGrid";
 import TrustBadges from "@/components/home/TrustBadges";
 import InteractiveDemo from "@/components/home/InteractiveDemo";
-import { CompanyPolicy } from "@/components/home/CompanyPolicy";
+
 
 export default function Home() {
   const data = renewalData as unknown as RenewalData;
@@ -41,7 +42,7 @@ export default function Home() {
   const contactProps = getProps<ContactCTAProps>("contact");
 
   return (
-    <div className="flex flex-col w-full bg-white min-h-screen text-slate-900 overflow-x-hidden">
+    <div className="flex flex-col w-full bg-white min-h-screen text-slate-900">
 
       {/* 1. Hero Section (Shader) */}
       {heroProps && <ShaderShowcase {...heroProps} />}
@@ -55,6 +56,7 @@ export default function Home() {
       {/* 3. Business Solutions */}
       <SolutionsGrid />
 
+      {/* 3-1. Interactive Demo */}
       <InteractiveDemo />
 
       {/* 4. Synergy Spotlight (Ddocdoc + Dr.Vice) */}
@@ -88,7 +90,6 @@ export default function Home() {
 
       {/* 6-1. Company Policy (UB Life, Business, Recruit) */}
       <CompanyPolicy />
-
 
       {/* 7. Contact CTA */}
       {contactProps && (
