@@ -27,29 +27,34 @@ export const HistoryTimeline: React.FC<HistoryTimelineProps> = ({
   baseDetailPath = "/about/history",
 }) => {
   return (
-    <section className="bg-white text-slate-900  py-20 sm:py-20">
-      <div className="container min-w-[1600px] mx-auto">
+    <section className="bg-white text-slate-900 py-14 sm:py-16 md:py-20">
+      <div className="container max-w-[1600px] mx-auto px-4 sm:px-6">
         {periods.map((period) => (
-          <div key={period.id} className="mb-20 last:mb-0 flex items-start justify-start gap-30">
-            <div className="mb-8 sticky top-[250px] bg-white z-50 w-[340px]">
-              <h2 className="text-2xl sm:text-2xl font-bold text-slate-700">
+          <div
+            key={period.id}
+            className="mb-14 sm:mb-16 md:mb-20 last:mb-0 flex flex-col md:flex-row items-start justify-start gap-8 sm:gap-10 md:gap-14"
+          >
+            <div className="mb-4 sm:mb-6 md:mb-8 md:sticky md:top-[180px] bg-white z-10 w-full md:w-[320px] lg:w-[340px]">
+              <h2 className="text-xl sm:text-2xl font-bold text-slate-700">
                 {period.title ?? period.range}
               </h2>
               {period.title && (
-                <p className="text-5xl sm:text-6xl font-extralight text-emerald-400 mt-8">{period.range}</p>
+                <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extralight text-emerald-400 mt-4 sm:mt-6 md:mt-8">
+                  {period.range}
+                </p>
               )}
             </div>
-            <ul className="divide-y divide-slate-200 -mt-8">
+            <ul className="w-full divide-y divide-slate-200">
               {period.milestones.map((m) => (
                 <li key={m.id} className="group">
                   <Link
-                    href={`${baseDetailPath}/${m.id}`}
-                    className="flex items-center gap-4 py-7 text-left hover:bg-slate-50 -mx-4 px-4 rounded-lg transition-colors "
+                    href={'#'}
+                    className="flex items-start sm:items-center gap-3 sm:gap-4 py-5 sm:py-6 md:py-7 text-left hover:bg-slate-50 -mx-2 sm:-mx-4 px-2 sm:px-4 rounded-lg transition-colors"
                   >
-                    <span className="text-slate-500 font-medium text-xl shrink-0 w-20">
+                    <span className="text-slate-500 font-medium text-sm sm:text-base md:text-xl shrink-0 w-16 sm:w-20">
                       {m.date}
                     </span>
-                    <span className="flex-1 text-slate-500 text-xl group-hover:text-primary-500 transition-colors">
+                    <span className="flex-1 text-slate-500 text-sm sm:text-base md:text-xl leading-relaxed group-hover:text-primary-500 transition-colors">
                       {m.title}
                     </span>
                     

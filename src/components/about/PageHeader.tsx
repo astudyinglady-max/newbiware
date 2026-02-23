@@ -23,7 +23,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
   return (
     <> 
     <header
-      className="relative w-full py-24 sm:py-28 overflow-hidden min-h-[400px] flex justify- items-center"
+      className="relative w-full py-16 sm:py-20 md:py-24 overflow-hidden min-h-[280px] sm:min-h-[340px] md:min-h-[400px] flex justify-center items-center"
       style={{
         backgroundImage: backgroundImage
           ? `linear-gradient(to bottom, rgba(15,23,42,0.7) 0%, rgba(15,23,42,0.5) 100%), url(${backgroundImage})`
@@ -32,7 +32,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         backgroundPosition: "center",
       }}
     >
-      <div className="container mx-auto px-6 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
         {/* Breadcrumb */}
         <nav
           className="flex items-center gap-2 text-sm text-white/70 mb-6"
@@ -40,7 +40,7 @@ export const PageHeader: React.FC<PageHeaderProps> = ({
         >
           
         </nav>
-        <h1 className="text-8xl sm:text-7xl font-bold text-white tracking-tight text-center">
+        <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-white tracking-tight text-center">
           {title}
         </h1>
       </div>

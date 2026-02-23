@@ -19,7 +19,7 @@ export default function ShaderShowcase({ headline, subHeadline, ctaPrimary, ctaS
     const containerRef = useRef<HTMLDivElement>(null)
 
     return (
-        <div ref={containerRef} className="min-h-[40vh] h-[50vh] sm:min-h-[45vh] md:h-[55vh] bg-black relative overflow-hidden flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12">
+        <div ref={containerRef} className=" bg-black relative overflow-hidden flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12">
 
             {/* Single Mesh Gradient — merged two layers into one to reduce GPU load */}
             <MeshGradient

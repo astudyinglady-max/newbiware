@@ -58,14 +58,14 @@ export function AboutSubPageLayout({
     <div className="min-h-screen bg-white text-slate-900">
       <PageHeader title={pageTitle} backgroundImage={backgroundImage} />
 
-      <section className="max-w-[1440px] mx-auto px-6 pb-24 sm:pb-20 ">
-        <div className={cn("w-full flex-shrink-0 bg-white z-50 lg:top-[30px] pt-16", scrolled ? "bg-white/80" : "")}>
+      <section className="max-w-[1440px] mx-auto px-4 sm:px-6 pb-16 sm:pb-20 md:pb-24">
+        <div className={cn("w-full flex-shrink-0 sticky top-2 sm:top-4 md:top-[30px] bg-white z-50 pt-10 sm:pt-12 md:pt-16", scrolled ? "bg-white/80" : "")}>
           <p className="flex items-center gap-2 text-sm font-medium text-slate-600 uppercase tracking-wider mb-6">
             <span className="w-2 h-2 rounded-full bg-primary-500 shrink-0" />
             {subLabel}
           </p>
           <h1 className={cn(
-            "text-4xl sm:text-3xl lg:text-5xl font-bold text-[#333333] leading-tight tracking-tighter whitespace-pre-line transition-padding duration-300",
+            "text-3xl sm:text-4xl lg:text-5xl font-bold text-[#333333] leading-tight tracking-tighter whitespace-pre-line transition-padding duration-300",
 
             )}>
             {typeof headline === "string"

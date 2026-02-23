@@ -1,20 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google"; // Keep these or remove if using custom fonts from globals
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { DockAndChat } from "@/components/layout/DockAndChat";
 import renewalData from "@/data/renewal.json";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: renewalData.projectInfo.projectName,
@@ -31,9 +20,7 @@ export default function RootLayout({
       <head>
         <link rel="stylesheet" as="style" crossOrigin="anonymous" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-primary-950 text-white selection:bg-primary-500 selection:text-white`}
-      >
+      <body className="antialiased bg-primary-950 text-white selection:bg-primary-500 selection:text-white">
         <Header
           logo={renewalData.layout.header.logo}
           navigation={renewalData.layout.header.navigation}

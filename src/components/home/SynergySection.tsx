@@ -14,14 +14,14 @@ interface SynergySectionProps {
 export const SynergySection: React.FC<SynergySectionProps> = ({ headline, center, left, right }) => {
     return (
         <section
-            className="relative overflow-hidden min-h-[820px] flex flex-col justify-center items-center bg-[#050510]"
+            className="relative overflow-hidden min-h-[820px] py-16 md:py-20 flex flex-col justify-center items-center bg-[#050510]"
         >
             <div className="relative z-10 max-w-[1600px] mx-auto px-6">
                 <div className="text-center mb-20">
                     <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">{headline}</h2>
 
                     {/* 헤드라인 아래 빛 퍼짐 효과 */}
-                    <div className="w-[40rem] max-w-full h-40 relative mx-auto z-0">
+                    <div className="w-full md:w-[40rem] max-w-full h-40 relative mx-auto z-0">
                         {/* 글로우 라인 */}
                         <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-indigo-500 to-transparent h-[2px] w-3/4 blur-sm" />
                         <div className="absolute inset-x-20 top-0 bg-linear-to-r from-transparent via-indigo-500 to-transparent h-px w-3/4" />

@@ -28,7 +28,7 @@ const companyPage: React.FC = () => {
       </>}
     >
       <div className="company-status-page">
-        <div className="company-status-page__content">
+        <div className="company-status-page__content flex-col md:flex-row ">
           <div className="company-img">
             {companyStatusImgData.map((item, idx) => (
               <img
