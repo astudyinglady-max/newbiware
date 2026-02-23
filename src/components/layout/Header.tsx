@@ -75,6 +75,15 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
         };
     }, [isMobileMenuOpen]);
 
+    useEffect(() => {
+        const mq = window.matchMedia("(min-width: 1280px)");
+        const handleChange = () => {
+            if (mq.matches) setIsMobileMenuOpen(false);
+        };
+        mq.addEventListener("change", handleChange);
+        return () => mq.removeEventListener("change", handleChange);
+    }, []);
+
     return (
         <header
             className={cn(
@@ -90,7 +99,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
                     </span>
                 </Link>
                 {/* Center: GNB */}
-                <nav className="hidden lg:flex items-center gap-8">
+                <nav className="hidden xl:flex items-center gap-8">
                     {navigation.map((item, idx) => (
                         <div key={idx} className="relative group">
                             <Link
@@ -154,7 +163,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
                             <button
                                 key={idx}
                                 className={cn(
-                                    "hidden md:flex px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg hover:shadow-blue-500/25",
+                                    "hidden xl:flex px-5 py-2.5 rounded-full text-sm font-bold transition-all shadow-lg hover:shadow-blue-500/25",
                                     action.style === "solid-blue"
                                         ? "bg-[#2563EB] text-white hover:bg-[#1d4ed8]"
                                         : "bg-white text-slate-900 hover:bg-slate-50 border border-slate-200"
@@ -170,7 +179,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
                         type="button"
                         onClick={() => setIsMobileMenuOpen((prev) => !prev)}
                         className={cn(
-                            "lg:hidden min-w-[44px] min-h-[44px] flex items-center justify-center -mr-2 transition-colors touch-manipulation",
+                            "xl:hidden min-w-[44px] min-h-[44px] flex items-center justify-center -mr-2 transition-colors touch-manipulation",
                             scrolled || isMobileMenuOpen ? "text-slate-900" : "text-white/80 hover:text-white"
                         )}
                         aria-label={isMobileMenuOpen ? "메뉴 닫기" : "메뉴 열기"}
@@ -183,7 +192,7 @@ export const Header: React.FC<HeaderProps> = ({ logo, navigation, actions }) => 
 
             {/* Mobile Menu Panel */}
             {isMobileMenuOpen && (
-                <div className="lg:hidden fixed inset-0 top-[72px] bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 overflow-y-auto">
+                <div className="xl:hidden fixed inset-0 top-[72px] bg-white/95 backdrop-blur-md border-t border-slate-200 z-40 overflow-y-auto">
                     <nav className="max-w-[1600px] mx-auto px-6 py-6">
                         {navigation.map((item, idx) => (
                             <div key={idx} className="border-b border-slate-200/80 last:border-b-0 py-3">
